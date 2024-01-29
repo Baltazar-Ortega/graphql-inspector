@@ -1,0 +1,56 @@
+schema {
+  query: RootQueryType
+  mutation: Mutation
+}
+
+type RootQueryType {
+  projects: [Project]
+  project(id: ID): Project
+  clients: [Client]
+  client(id: ID): Client
+}
+
+type Project {
+  id: ID
+  name: String
+  description: String @deprecated(reason: "Use 'name' instead")
+  status: String
+  client: Client
+}
+
+type Client {
+  id: ID
+  name: String
+  email: String
+  phone: String
+}
+
+type Mutation {
+  addClient(name: String!, email: String!, phone: String!): Client
+  deleteClient(id: ID!): Client
+  addProject(
+    name: String!
+    description: String!
+    status: ProjectStatus = new
+    clientId: ID!
+  ): Project
+  deleteProject(id: ID!): Project
+  updateProject(
+    id: ID!
+    name: String
+    description: String
+    status: ProjectStatusUpdate
+  ): Project
+}
+
+enum ProjectStatus {
+  new
+  progress
+  completed
+}
+
+enum ProjectStatusUpdate {
+  new
+  progress
+  completed
+}

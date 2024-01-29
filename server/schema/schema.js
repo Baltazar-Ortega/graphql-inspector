@@ -9,6 +9,7 @@ const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLEnumType,
+  printSchema
 } = require('graphql');
 
 // Project Type
@@ -17,7 +18,7 @@ const ProjectType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    description: { type: GraphQLString },
+    description: { type: GraphQLString, deprecationReason: "Use 'name' instead" },
     status: { type: GraphQLString },
     client: {
       type: ClientType,
@@ -184,7 +185,11 @@ const mutation = new GraphQLObjectType({
   },
 });
 
-module.exports = new GraphQLSchema({
+const newSchema = new GraphQLSchema({
   query: RootQuery,
   mutation,
 });
+
+console.log("newSchema: ", printSchema(newSchema))
+
+module.exports = newSchema
