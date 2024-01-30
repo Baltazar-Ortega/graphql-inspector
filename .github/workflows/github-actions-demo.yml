@@ -25,4 +25,4 @@ jobs:
       - name: GraphQL Inspector
         uses: kamilkisiela/graphql-inspector@release-1701263349990
         with:
-          schema: ./server/schema/schema.graphql
+          schema: "./server/schema/schema.graphql"
