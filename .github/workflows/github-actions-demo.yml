@@ -20,9 +20,10 @@ jobs:
   Validate-GraphQL-Schema:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: GraphQL Inspector
-        uses: kamilkisiela/graphql-inspector@release-1701263349990
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - uses: kamilkisiela/graphql-inspector@master
         with:
-          schema: "./server/schema/schema.graphql"
+          name: Validate GraphQL Schema
+          schema: "master:./server/schema/schema.graphql"
