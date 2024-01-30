@@ -17,13 +17,19 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  Validate-GraphQL-Schema:
+  Schema-Diff:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - uses: kamilkisiela/graphql-inspector@master
-        with:
-          name: Validate GraphQL Schema
-          schema: "main:server/schema/schema.graphql"
+      - name: Install GraphQL Inspector CLI and loaders
+        run: |
+          yarn global add @graphql-inspector/diff-command
+          yarn global add @graphql-inspector/graphql-loader
+          yarn global add @graphql-inspector/git-loader
+          yarn global add graphql
+
+      - name: Run schema diff
+        run: |
+          graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
