@@ -17,7 +17,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  Schema-Diff:
+  Validate-GraphQL-Schema:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,16 +28,10 @@ jobs:
         with:
           node-version: "18" # Specify the Node.js version you need
 
-      - name: Show npm version
-        run: npm --version
-
-      - name: Install GraphQL Inspector CLI and loaders
+      - name: Install GraphQL Inspector CLI
         run: |
           npm install -g graphql
           npm install -g @graphql-inspector/cli
-
-      - name: List installed packages
-        run: npm list -g --depth 0
 
       - name: Run schema diff
         run: |
