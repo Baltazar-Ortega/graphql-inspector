@@ -35,9 +35,6 @@ jobs:
         run: |
           npm install -g graphql
           npm install -g @graphql-inspector/cli
-          npm install -g @graphql-inspector/diff-command
-          npm install -g @graphql-inspector/graphql-loader
-          npm install -g @graphql-inspector/git-loader
 
       - name: List installed packages
         run: npm list -g --depth 0
