@@ -26,24 +26,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "21" # Specify the Node.js version you need
+          node-version: "18" # Specify the Node.js version you need
 
-      - name: Install Yarn
-        run: npm install -g yarn
-
-      - name: Show Yarn version
-        run: yarn --version
+      - name: Show npm version
+        run: npm --version
 
       - name: Install GraphQL Inspector CLI and loaders
         run: |
-          yarn global add @graphql-inspector/diff-command
-          yarn global add @graphql-inspector/graphql-loader
-          yarn global add @graphql-inspector/git-loader
-          yarn global add graphql
+          npm install -g @graphql-inspector/diff-command
+          npm install -g @graphql-inspector/graphql-loader
+          npm install -g @graphql-inspector/git-loader
+          npm install -g graphql
 
       - name: List installed packages
-        run: yarn global list
+        run: npm list -g --depth 0
 
       - name: Run schema diff
         run: |
-          yarn run graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
+          graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
