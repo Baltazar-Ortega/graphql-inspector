@@ -41,6 +41,9 @@ jobs:
       - name: List installed packages
         run: npm list -g --depth 0
 
+      - name: Show files of current directory
+        run: ls -la
+
       - name: Run schema diff
         run: |
           npm run schema-diff
