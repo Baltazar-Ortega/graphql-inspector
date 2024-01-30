@@ -30,6 +30,9 @@ jobs:
           yarn global add @graphql-inspector/git-loader
           yarn global add graphql
 
+      - name: List installed packages
+        run: yarn global list
+
       - name: Run schema diff
         run: |
-          graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
+          yarn run graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
