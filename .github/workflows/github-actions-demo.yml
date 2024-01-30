@@ -43,4 +43,4 @@ jobs:
 
       - name: Run schema diff
         run: |
-          graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
+          npm run graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'
