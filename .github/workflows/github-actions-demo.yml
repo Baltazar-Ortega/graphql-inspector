@@ -16,3 +16,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  Validate-GraphQL-Schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GraphQL Inspector
+        uses: kamilkisiela/graphql-inspector@release-1701263349990
+        with:
+          schema: ./server/schema/schema.graphql
