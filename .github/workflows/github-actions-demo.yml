@@ -26,4 +26,4 @@ jobs:
       - uses: kamilkisiela/graphql-inspector@master
         with:
           name: Validate GraphQL Schema
-          schema: "main:./server/schema/schema.graphql"
+          schema: "main:server/schema/schema.graphql"
