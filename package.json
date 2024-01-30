@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "schema-diff": "npm run graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'"
+    "schema-diff": "graphql-inspector diff 'git:origin/main:./server/schema/schema.graphql' './server/schema/schema.graphql'"
   },
   "keywords": [],
   "author": "",
