@@ -33,6 +33,6 @@ jobs:
           npm install -g graphql
           npm install -g @graphql-inspector/cli
 
-      - name: Run schema diff
+      - name: Run schema validate
         run: |
           graphql-inspector validate --deprecated=true './client/src/**/*.graphql' './server/schema/schema.graphql'
