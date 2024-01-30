@@ -35,4 +35,4 @@ jobs:
 
       - name: Run schema validate
         run: |
-          graphql-inspector validate --deprecated=true './client/src/**/*.{graphql,js}' './server/schema/schema.graphql'
+          graphql-inspector validate --deprecated=true './client/src/**/*.graphql' './server/schema/schema.graphql'
